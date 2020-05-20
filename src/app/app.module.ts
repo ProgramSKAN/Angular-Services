@@ -25,7 +25,7 @@ import { EditReaderComponent } from './edit-reader/edit-reader.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [LoggerService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
