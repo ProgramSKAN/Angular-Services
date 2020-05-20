@@ -30,18 +30,33 @@ export class DashboardComponent implements OnInit {
       ()=>this.loggerService.log('Completed getting the readers')
     );
     this.mostPopularBook=this.dataService.mostPopularBook;
-    this.dataService.getAuthorRecommendation(1)
-      .then(
-        (author:string)=>{
-          this.loggerService.log(author);//data
-          //throw new Error('problem in the success handler');
-        },
-        (err:string)=>this.loggerService.error(`the promise was rejected: ${err}`)//reason
-      ).catch(
-        (error:Error)=>this.loggerService.error(error.message))
+
+
+    // this.dataService.getAuthorRecommendation(1)
+    //   .then(
+    //     (author:string)=>{
+    //       this.loggerService.log(author);//data
+    //       //throw new Error('problem in the success handler');
+    //     },
+    //     (err:string)=>this.loggerService.error(`the promise was rejected: ${err}`)//reason
+    //   ).catch(
+    //     (error:Error)=>this.loggerService.error(error.message))
+    //above or
+    this.getAuthorRecommendationAsync(1);
 
 
     this.loggerService.log('done with dashboard initialization');//this appears before 'Completed getting the readers' due to async
+  }
+
+  //await can be used in any promise.if it resolves the it proceed to next line.if rejects then proceeds in catch block
+  private async getAuthorRecommendationAsync(readerID:number):Promise<void>{
+    try{
+      let author:string=await this.dataService.getAuthorRecommendation(readerID);
+      this.loggerService.log(author);
+    }
+    catch(error){
+      this.loggerService.error(error);
+    }
   }
 
   deleteBook(bookID: number): void {
