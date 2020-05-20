@@ -42,21 +42,24 @@ export class DashboardComponent implements OnInit {
     //   ).catch(
     //     (error:Error)=>this.loggerService.error(error.message))
     //above or
-    this.getAuthorRecommendationAsync(1);
-
+    //this.getAuthorRecommendationAsync(1);
+    //or
+    this.getAuthorRecommendationAsync(1)
+      .catch(err=>this.loggerService.error(err));
 
     this.loggerService.log('done with dashboard initialization');//this appears before 'Completed getting the readers' due to async
   }
 
   //await can be used in any promise.if it resolves the it proceed to next line.if rejects then proceeds in catch block
   private async getAuthorRecommendationAsync(readerID:number):Promise<void>{
-    try{
+    // try{
       let author:string=await this.dataService.getAuthorRecommendation(readerID);
       this.loggerService.log(author);
-    }
-    catch(error){
-      this.loggerService.error(error);
-    }
+      //throw new Error('problem in the success handler');
+    // }
+    // catch(error){
+    //   this.loggerService.error(error);
+    // }
   }
 
   deleteBook(bookID: number): void {
