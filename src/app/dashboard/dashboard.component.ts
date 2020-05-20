@@ -1,3 +1,4 @@
+import { LoggerService } from './../services/logger.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Book } from "app/models/book";
@@ -15,7 +16,9 @@ export class DashboardComponent implements OnInit {
   allReaders: Reader[] = allReaders;
   mostPopularBook: Book = allBooks[0];
 
-  constructor() { }
+  constructor(private loggerService:LoggerService) {
+    this.loggerService.log('printing from dashboard');
+   }
 
   ngOnInit() {
   }
