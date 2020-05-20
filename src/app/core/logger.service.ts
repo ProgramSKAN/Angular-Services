@@ -8,6 +8,6 @@ export class LoggerService {
     }
 
     error(message:string):void{
-      console.log(`error: ${message}`);
+      console.log(`ERROR:  ${message}`);
     }
 }
