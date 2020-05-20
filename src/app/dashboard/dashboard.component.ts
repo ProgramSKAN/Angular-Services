@@ -1,7 +1,8 @@
 import { BookTrackerError } from './../models/bookTrackerError';
 import { DataService } from '../core/data.service';
 import { LoggerService } from '../core/logger.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Version,VERSION } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 
 import { Book } from "app/models/book";
 import { allBooks, allReaders } from 'app/data';
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
   allReaders: Reader[];
   mostPopularBook: Book;
 
-  constructor(private loggerService:LoggerService,private dataService:DataService) {
+  constructor(private loggerService:LoggerService,private dataService:DataService,private title:Title) {
     this.loggerService.log('printing from dashboard');
    }
 
@@ -46,6 +47,8 @@ export class DashboardComponent implements OnInit {
     //or
     this.getAuthorRecommendationAsync(1)
       .catch(err=>this.loggerService.error(err));
+
+      this.title.setTitle(`Book Tracker ${VERSION.full}`);
 
     this.loggerService.log('done with dashboard initialization');//this appears before 'Completed getting the readers' due to async
   }
