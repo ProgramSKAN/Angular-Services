@@ -1,4 +1,4 @@
-import { allReaders, allBooks } from './../data';
+import { allReaders, allBooks } from '../data';
 import { Reader } from 'app/models/reader';
 import { LoggerService } from './logger.service';
 import { Injectable } from '@angular/core';

@@ -1,5 +1,5 @@
-import { LoggerService } from './../services/logger.service';
-import { DataService } from './../services/data.service';
+import { LoggerService } from '../core/logger.service';
+import { DataService } from '../core/data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

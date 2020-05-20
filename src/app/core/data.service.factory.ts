@@ -1,4 +1,4 @@
-import { DataService } from 'app/services/data.service';
+import { DataService } from 'app/core/data.service';
 import { LoggerService } from './logger.service';
 
 export function dataServiceFactory(logger:LoggerService) {
