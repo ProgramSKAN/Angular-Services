@@ -30,6 +30,16 @@ export class DashboardComponent implements OnInit {
       ()=>this.loggerService.log('Completed getting the readers')
     );
     this.mostPopularBook=this.dataService.mostPopularBook;
+    this.dataService.getAuthorRecommendation(1)
+      .then(
+        (author:string)=>{
+          this.loggerService.log(author);//data
+          //throw new Error('problem in the success handler');
+        },
+        (err:string)=>this.loggerService.error(`the promise was rejected: ${err}`)//reason
+      ).catch(
+        (error:Error)=>this.loggerService.error(error.message))
+
 
     this.loggerService.log('done with dashboard initialization');//this appears before 'Completed getting the readers' due to async
   }
