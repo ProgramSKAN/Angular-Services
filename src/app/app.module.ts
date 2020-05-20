@@ -29,6 +29,8 @@ import { dataServiceFactory } from './services/data.service.factory';
     FormsModule
   ],
   providers: [
+    LoggerService,DataService
+
     // implementation of LoggerService can be changed easily by chaging th useclass
     //LoggerService,
     //{provide:LoggerService,useClass:LoggerService},//{provide:token,useclass:classToBeInstantiated} | token name should match constructor injected type (private logger:Loggerservice)
@@ -39,13 +41,13 @@ import { dataServiceFactory } from './services/data.service.factory';
     // {provide:LoggerService,useExisting:PlainLoggerService},
 
     //useclass,useExisting uses 'new' keyword to instantate class.useVale is inline
-    {provide:LoggerService,useValue:{
-      log:(message)=>console.log(`useValue MESSAGE:${message}`),
-      error:(message)=>console.log(`useValue ERROR:${message}`)
-    }},
+    // {provide:LoggerService,useValue:{
+    //   log:(message)=>console.log(`useValue MESSAGE:${message}`),
+    //   error:(message)=>console.log(`useValue ERROR:${message}`)
+    // }},
 
     //DataService
-    {provide:DataService,useFactory:dataServiceFactory,deps:[LoggerService]}
+    // {provide:DataService,useFactory:dataServiceFactory,deps:[LoggerService]}
   ],
   bootstrap: [AppComponent]
 })

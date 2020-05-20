@@ -9,7 +9,8 @@ import { allBooks } from 'app/data';
 @Component({
   selector: 'app-edit-book',
   templateUrl: './edit-book.component.html',
-  styles: []
+  styles: [],
+  providers:[DataService]
 })
 export class EditBookComponent implements OnInit {
 
