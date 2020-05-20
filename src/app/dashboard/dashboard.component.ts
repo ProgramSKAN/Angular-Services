@@ -1,3 +1,4 @@
+import { BookTrackerError } from './../models/bookTrackerError';
 import { DataService } from '../core/data.service';
 import { LoggerService } from '../core/logger.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,8 +25,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.allBooks= this.dataService.getAllBooks();
     this.dataService.getAllReaders().subscribe(
-      data=>this.allReaders=data,
-      err=>console.log(err),
+      (data:Reader[])=>this.allReaders=data,
+      (err:BookTrackerError)=>console.log(err.friendlyMessage),
       ()=>this.loggerService.log('Completed getting the readers')
     );
     this.mostPopularBook=this.dataService.mostPopularBook;
