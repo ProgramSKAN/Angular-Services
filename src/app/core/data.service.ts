@@ -3,16 +3,19 @@ import { Reader } from 'app/models/reader';
 import { LoggerService } from './logger.service';
 import { Injectable } from '@angular/core';
 import { Book } from 'app/models/book';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class DataService {
 
   mostPopularBook:Book=allBooks[0];
 
-  constructor(private loggerService:LoggerService) {}
+  constructor(private loggerService:LoggerService,private http:HttpClient) {}
 
-  getAllReaders():Reader[]{
-    return allReaders;
+  //ASYNCHRONOUS
+  getAllReaders():Observable<Reader[]>{
+    return this.http.get<Reader[]>('/api/readers');
   }
 
   getReaderById(id:number):Reader{
@@ -30,4 +33,10 @@ export class DataService {
   setMostPopularBook(popularBook:Book):void{
     this.mostPopularBook=popularBook;
   }
+
+  //SYNCHRONOUS
+  // getAllReaders():Reader[]{
+  //   return allReaders;
+  // }
+
 }
