@@ -51,6 +51,8 @@ export class DashboardComponent implements OnInit {
       this.title.setTitle(`Book Tracker ${VERSION.full}`);
 
     this.loggerService.log('done with dashboard initialization');//this appears before 'Completed getting the readers' due to async
+
+    throw new Error('error raise to check> replace default(red ugly error) ErrorHandler with BookTrackerErrorHandlerService')
   }
 
   //await can be used in any promise.if it resolves the it proceed to next line.if rejects then proceeds in catch block

@@ -1,4 +1,5 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { BookTrackerErrorHandlerService } from './book-tracker-error-handler.service';
+import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from './data.service';
 import { LoggerService } from './logger.service';
@@ -9,7 +10,8 @@ import { throwIfAlreadyLoaded } from './module-import.guard';
     CommonModule
   ],
   providers: [
-    LoggerService,DataService
+    LoggerService,DataService,
+    {provide:ErrorHandler,useClass:BookTrackerErrorHandlerService}
 
     // implementation of LoggerService can be changed easily by chaging th useclass
     //LoggerService,
